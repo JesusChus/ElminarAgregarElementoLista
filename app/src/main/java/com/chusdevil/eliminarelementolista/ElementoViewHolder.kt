@@ -8,9 +8,9 @@ class ElementoViewHolder(private val view :View) : ViewHolder(view){
 
     private val elemento = view.findViewById<TextView>(R.id.tvElemento)
 
-    fun ingresarDatos (datos: String, borrarElemento: (Int) -> Unit){
+    fun ingresarDatos (datos: String){
         elemento.text = datos
-        elemento.setOnClickListener{ borrarElemento(adapterPosition)}
+
     }
 
 }

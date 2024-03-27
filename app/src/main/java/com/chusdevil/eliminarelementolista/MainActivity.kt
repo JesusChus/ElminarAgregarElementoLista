@@ -9,7 +9,7 @@ import java.text.FieldPosition
 
 class MainActivity : AppCompatActivity() {
     private val texto = mutableListOf<String>()
-    private val adapter = ListaAdapter(texto, borrarElemento = { borrarItem(it) })
+    private val adapter = ListaAdapter(texto, borrarElemento = { position -> borrarItem(position) })
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,9 +17,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val listaAdapter = findViewById<RecyclerView>(R.id.rvLista)
 
-        repeat(10) {
-            texto.add("")
-        }
+//        repeat(10) {
+//            texto.add("")
+//        }
+        texto.add("Cesar")
+        texto.add("Jesus")
+        texto.add("Kira")
+        texto.add("Dumevi")
+        texto.add("Elena")
+        texto.add("Roberto")
 
         listaAdapter.layoutManager = LinearLayoutManager(this)
         listaAdapter.adapter = adapter
@@ -38,7 +44,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun borrarItem(position: Int) {
         texto.removeAt(position)
-        adapter.notifyItemRemoved(position)
+        adapter.notifyDataSetChanged()
+//        adapter.notifyItemRemoved(position)
     }
 
 

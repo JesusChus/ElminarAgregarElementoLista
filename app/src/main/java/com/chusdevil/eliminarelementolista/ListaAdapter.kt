@@ -18,7 +18,12 @@ class ListaAdapter(val texto: MutableList<String>, val borrarElemento :(Int)-> U
     }
 
     override fun onBindViewHolder(holder: ElementoViewHolder, position: Int) {
-        holder.ingresarDatos("Elemento $position", borrarElemento)
+        holder.ingresarDatos(texto[position]+" $position")
+        holder.itemView.setOnClickListener {
+            borrarElemento(holder.adapterPosition)
+        }
+
+//        elemento.setOnClickListener{ borrarElemento(adapterPosition)}
 
 
 
